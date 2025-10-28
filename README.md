@@ -22,7 +22,7 @@ NAVER LABS Europe
   - [Distillation datasets](#distillation-datasets)
     - [Table of datasets](#table-of-datasets)
 - [Training models](#training-models)
-- [Evaluating models](#evaluating-models)
+- [Evaluating downstream tasks](#evaluating-downstream-tasks)
   - [Fine-tuned MASt3R decoders](#fine-tuned-mast3r-decoders)
 - [PCA visualization](#pca-visualization)
 - [Citation](#citation)
@@ -157,10 +157,12 @@ bash ./scripts/train.sh ${output_dir_finetune} \
     --batch_size_per_gpu=128
 ```
 
-# Evaluating models
+# Evaluating downstream tasks
 
-We do not provide evaluation scripts for the downstream tasks.
-We kindly ask you to refer to the original repositories of the downstream tasks for evaluation:
+After training the DUNE encoder, we freeze it and fine-tune the decoder (from the corresponding teacher) for each downstream task.
+Please see the Appendix B of the paper for the details on fine-tuning.
+
+We do not provide in the codebase the evaluation scripts for the downstream task and kindly ask you to refer to the original repositories:
 - https://github.com/facebookresearch/dinov2
 - https://github.com/naver/mast3r (see below for the fine-tuned MASt3R decoders)
 - https://github.com/naver/multi-hmr
